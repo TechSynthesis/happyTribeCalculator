@@ -15,14 +15,21 @@
                 font-size: 40px;
                 text-align: center;
             }
-            .container{
+
+
+            #container {
+                display: flex;           /* establish flex container */
+                flex-direction: column;  /* make main axis vertical */
+                justify-content: center; /* center items vertically, in this case */
+                align-items: center;     /* center items horizontally, in this case */
                 
-                display: flex; 
-                align-items: center;
-                justify-content: center;
-    
             }
 
+            .box {
+                width: 300px;
+                margin: 5px;
+                text-align: center;     /* will center text in <p>, which is not a flex item */
+            }
 
             #search {
                 -webkit-box-align: center;
@@ -33,11 +40,12 @@
                 display: flex;
                 -webkit-box-pack: justify;
                 justify-content: space-between;
-                margin: 0.5em 0;
+                margin: 0.1em 0;
+                margin-bottom: 0.5em;
                 padding: 0.5em 0.5em 0.5em 0.5em;
                 -webkit-transition: all 0.5s;
                 transition: all 0.5s;
-                width: 500px
+                
             }
 
             #search:hover,
@@ -78,6 +86,9 @@
             }
             .smalltext{
                 font-size: 18px;
+                text-align: center;
+                margin-bottom: 0%;
+                margin-top: 0.5em;
             }
     </style>
 </head>
@@ -85,32 +96,39 @@
 
 
     <div ng-app="" >
-        <div class='container'>
-            <p> </p>
-        </div>
-        <div class='container'>
-            <div id="search"> <input pattern="[0-9]*" type="number" ng-model='cost' placeholder="Materials Costs" /></div>
-           
-        </div> 
+        <div id='container'>
+            
+            
+            <div class='box'>
+                <p class="smalltext"> Enter Material Costs Below</p>
+                <div id="search"> <input pattern="[0-9]*" type="number" ng-model='cost' placeholder="in Rs" /></div>
+            
+            </div> 
+            
+            
+            <div class='box'>
+                <p class="smalltext">Time spent on making ?</p>
+                <div id="search"> <input pattern="[0-9]*" type="number" ng-model='time' placeholder="in Minutes" /></div>
+            
+            </div> 
+            
 
-        <div class='container'>
-            <div id="search"> <input pattern="[0-9]*" type="number" ng-model='time' placeholder="Time spent on making ?" /></div>
-           
-        </div> 
-        <p class="smalltext">Enter in Minutes</p>
+            <div class='box'>
+                <p class="smalltext">What's ur minute worth ?</p>
+                <div id="search"> <input pattern="[0-9]*" type="number" ng-model='paypermin' placeholder="Enter in Minutes" /></div>
+                <p class="smalltext">i.e Minimum wage abroad is Rs.25/min <br> luxury craftsman charge Rs. 84/min</p>
+            </div> 
+            <br>
+            
+            
+            <div class='box'>
+                <p>What you should charge </p>
+            </div>
+            <div class='box'>
+                <h1>{{ 20 + 50 + (cost) + (time*paypermin) }}</h1>
+            </div>
+        </div>
 
-        <div class='container'>
-            <div id="search"> <input pattern="[0-9]*" type="number" ng-model='paypermin' placeholder="What's ur minute worth ? " /></div>
-        </div> 
-        <p class="smalltext">i.e Minimum wage abroad is Rs.25/min <br> luxury craftsman charge Rs. 84/min</p>
-        
-        <div class='container'>
-            <p>What you should charge </p>
-        </div>
-        <div class='container'>
-            <h1>{{ 20 + 50 + (cost) + (time*paypermin) }}</h1>
-        </div>
-        
     </div>
 
 
