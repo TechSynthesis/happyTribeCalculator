@@ -20,9 +20,7 @@
                 display: flex; 
                 align-items: center;
                 justify-content: center;
-            }
-            .box{
-
+    
             }
 
 
@@ -36,7 +34,7 @@
                 -webkit-box-pack: justify;
                 justify-content: space-between;
                 margin: 0.5em 0;
-                padding: 0.5em 0.5em 0.5em 1em;
+                padding: 0.5em 0.5em 0.5em 0.5em;
                 -webkit-transition: all 0.5s;
                 transition: all 0.5s;
                 width: 500px
@@ -76,7 +74,10 @@
             }
 
             #search input::placeholder {
-                color: #fff
+                color: #fff;
+            }
+            .smalltext{
+                font-size: 18px;
             }
     </style>
 </head>
@@ -88,14 +89,26 @@
             <p> </p>
         </div>
         <div class='container'>
-            <div id="search"> <input type="number" ng-model='cost' placeholder="Enter Price of the Product" /></div>
+            <div id="search"> <input pattern="[0-9]*" type="number" ng-model='cost' placeholder="Materials Costs" /></div>
            
-        </div>
+        </div> 
+
+        <div class='container'>
+            <div id="search"> <input pattern="[0-9]*" type="number" ng-model='time' placeholder="Time spent on making ?" /></div>
+           
+        </div> 
+        <p class="smalltext">Enter in Minutes</p>
+
+        <div class='container'>
+            <div id="search"> <input pattern="[0-9]*" type="number" ng-model='paypermin' placeholder="What's ur minute worth ? " /></div>
+        </div> 
+        <p class="smalltext">i.e Minimum wage abroad is Rs.84 per min</p>
+        
         <div class='container'>
             <p>What you should charge </p>
         </div>
         <div class='container'>
-            <h1>{{ 50 + cost*3 }}</h1>
+            <h1>{{ 20 + 50 + (cost) + (time*paypermin) }}</h1>
         </div>
         
     </div>
